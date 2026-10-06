@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Low-Fan-In Consequence Repository machine-readable schema",
+  "description": "Definitions for theorem, conjunctive support-hyperedge, and provenance records extracted from Strength-Ordered Consolidated Edition 0.2.",
+  "$defs": {
+    "theorem": {
+      "type": "object",
+      "required": [
+        "id",
+        "catalogue_number",
+        "title",
+        "statement",
+        "hypotheses",
+        "proof",
+        "status",
+        "displayed_fan_in",
+        "source",
+        "parents_displayed_raw",
+        "support_semantics"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^LF-"
+        },
+        "catalogue_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "type": "string"
+        },
+        "statement": {
+          "type": "string"
+        },
+        "hypotheses": {
+          "type": "string"
+        },
+        "proof": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "displayed_fan_in": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "intended_use": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "parents_displayed_raw": {
+          "type": "string"
+        },
+        "parent_theorem_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "support_semantics": {
+          "const": "conjunctive_displayed_parent_set"
+        },
+        "source_edition": {
+          "type": "string"
+        },
+        "machine_verified_in_this_repository": {
+          "type": "boolean"
+        },
+        "extraction_source": {
+          "type": "string"
+        }
+      }
+    },
+    "support": {
+      "type": "object",
+      "required": [
+        "support_id",
+        "target_theorem_id",
+        "conjunctive",
+        "displayed_fan_in",
+        "parents_displayed_raw",
+        "certificate"
+      ],
+      "properties": {
+        "support_id": {
+          "type": "string"
+        },
+        "target_theorem_id": {
+          "type": "string"
+        },
+        "conjunctive": {
+          "const": true
+        },
+        "displayed_fan_in": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "parents_displayed_raw": {
+          "type": "string"
+        },
+        "parent_theorem_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "external_or_source_support_present": {
+          "type": "boolean"
+        },
+        "certificate": {
+          "type": "object"
+        },
+        "support_closed_machine_check": {
+          "type": "string"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "theorem_id",
+        "catalogue_number",
+        "source",
+        "hypotheses",
+        "status",
+        "source_edition"
+      ],
+      "properties": {
+        "theorem_id": {
+          "type": "string"
+        },
+        "catalogue_number": {
+          "type": "integer"
+        },
+        "source": {
+          "type": "string"
+        },
+        "hypotheses": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "intended_use": {
+          "type": "string"
+        },
+        "source_edition": {
+          "type": "string"
+        },
+        "source_object_title": {
+          "type": "string"
+        },
+        "source_object_url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    }
+  }
+}
